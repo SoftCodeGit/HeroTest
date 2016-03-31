@@ -1,4 +1,5 @@
-﻿import { Component, Input } from 'angular2/core'
+﻿import { Component, Input } from 'angular2/core';
+import {Hero} from './hero';
 
 @Component({
     selector: 'my-hero-detail',
@@ -17,5 +18,7 @@
 
 export class HeroDetailComponent {
 
+    @Input() //decorates hero property to indicate that it is an input property
+    hero: Hero;
 
 }
