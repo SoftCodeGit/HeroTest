@@ -70,7 +70,7 @@ import {HeroService} from './hero.service';
     }
   `],
     directives: [HeroDetailComponent],
-    providers: [HeroService]
+    providers: [HeroService] //creates instance of HeroService when this component is created
 })
 
 export class AppComponent implements OnInit {
@@ -82,7 +82,10 @@ export class AppComponent implements OnInit {
     selectedHero: Hero;
 
     getHeroes() {
-        this.heroes = this._heroService.getHeroes();
+        //this.heroes = this._heroService.getHeroes();
+
+        //this._heroService.getHeroes().then(heroes => this.heroes = heroes);
+        this._heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
     }
 
     onSelect(hero: Hero) {
@@ -90,6 +93,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        //we shouldn't get data within the constructor, so use this event instead 
         this.getHeroes();
     }
 }
